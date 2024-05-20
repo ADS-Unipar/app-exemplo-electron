@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 function createWindow() {
@@ -13,7 +13,13 @@ function createWindow() {
   });
 
   win.loadFile('index.html');
+
 }
+
+ipcMain.on('toMain', (event, args) => {
+  console.log(args);
+  event.reply('fromMain', 'Pong');
+});
 
 app.disableHardwareAcceleration();
 app.on('ready', createWindow);

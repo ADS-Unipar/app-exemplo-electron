@@ -12,11 +12,9 @@ document.getElementById('fetch-data').addEventListener('click', () => {
 });
 
 document.getElementById('send-message').addEventListener('click', () => {
-  console.log('Sending message...');
   window.api.send('toMain', 'Ping');
-  window.api.send('fromMain', 'Ping');
 });
 
 window.api.receive('fromMain', (data) => {
-  console.log(data); // 'Pong'
+  console.log({p:data}); // 'Pong'
 });
